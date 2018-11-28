@@ -20,4 +20,7 @@
     <Folder Include="Areas\Identity\Services\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Compile Remove="Data\VideoDbContext.cs" />
+  </ItemGroup>
 </Project>

@@ -1,0 +1,50 @@
+﻿@*
+    /Volumes/MacInternalHD/Development/VisualStudio/IdentityExample/IdentityExampleApp/Views/Home/Landing.cshtml
+*@
+
+@model IdentityExampleApp.Models.MoviesViewModel
+
+@{
+    ViewData["Title"] = "Landing Page";
+}
+
+<div class="container mb-auto">
+    <div class="row">
+    </div>
+</div>
+<div class="container">
+    <h2>ASP.NET Core Identity</h2>
+    <h3>You have landed in the application with authentication.</h3>
+</div>
+<br />
+<br />
+<h2>Some Movies</h2>
+
+@using (Model)
+{
+    if (Model.IsAny == false)
+    {
+        <p>We don't have any movies yet.</p>
+    }
+    else
+    {
+        <table class="table">
+            <tr>
+                <th scope="col">Movie</th>
+                <th scope="col">Genre</th>
+            </tr>
+            @foreach (var movie in Model.Movies)
+            {
+                <tr>
+                    <td>@movie.Title</td>
+                    <td>@Model.GetGenreName(movie)</td>
+                </tr>
+            }
+        </table>
+    }
+    <br />
+}
+
+
+@section Scripts {
+}

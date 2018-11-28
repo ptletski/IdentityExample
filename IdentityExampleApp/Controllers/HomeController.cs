@@ -12,6 +12,11 @@ namespace IdentityExampleApp.Controllers
     {
         public IActionResult Index()
         {
+            if (this.User.Identity.IsAuthenticated == true)
+            {
+                return RedirectToAction("Landing");
+            }
+
             return View();
         }
 
@@ -32,6 +37,13 @@ namespace IdentityExampleApp.Controllers
         public IActionResult Privacy()
         {
             return View();
+        }
+
+        public IActionResult Landing()
+        {
+            MoviesViewModel model = new MoviesViewModel();
+
+            return View(model);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
